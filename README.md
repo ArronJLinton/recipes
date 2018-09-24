@@ -1,1 +1,1 @@
-# github-recipes
+# recipes
