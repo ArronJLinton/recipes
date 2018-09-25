@@ -4,11 +4,11 @@
 
 #### Explain the key points of creating an MVP
 
-  ##### Start with a general idea.
-  ##### Identify the target audience.
-  ##### Identify the problem that the product will address.
-  ##### Write down the primary goal of the product.
-  ##### Identify and prioritize essential user stories.
+  ###### Start with a general idea.
+  ###### Identify the target audience.
+  ###### Identify the problem that the product will address.
+  ###### Write down the primary goal of the product.
+  ###### Identify and prioritize essential user stories.
 
 #### Idea: I'll build an online code editor with Stack Overflow integration."
 
