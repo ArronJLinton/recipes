@@ -5,7 +5,8 @@ example MERN stack chat application that uses socket.io
 * This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Demo
-![demo gif](./_screenshots/socket_demo.gif)
+<img src="https://media.giphy.com/media/Sb6YTCOsQUWipTDSWf/giphy.gif" width="100%" height="auto" />
+
 
 
 ## Project Structure
