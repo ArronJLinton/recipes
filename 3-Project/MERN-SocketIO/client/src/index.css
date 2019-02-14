@@ -1,0 +1,23 @@
+html{
+  height: 100%;
+  width: 100%;
+}
+
+
+body {
+  background-color:rgb(255, 255, 255);
+  /* background-image: url("https://images.pexels.com/photos/64057/pexels-photo-64057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"); */
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+  /* display: inline-flex; */
+  justify-content: center;
+  width: 100%;
+}
+
+
+
