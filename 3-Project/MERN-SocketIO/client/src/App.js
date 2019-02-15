@@ -21,10 +21,16 @@ class App extends React.Component {
         // { transports : ['websocket'] } -> 
         this.socket = io.connect('http://localhost:3001', { transports : ['websocket'] });
         
-        this.socket.on('NEW_ROOMS', function(data){
+        this.socket.on('UPDATE_ROOMS', function(data){
           console.log("Rooms Received: ", data)
-          addMessage(data);
+          updateRooms(data);
       });
+
+      const updateRooms = data => {
+        console.log(data);
+        this.setState({rooms: [...this.state.rooms, data]});
+        console.log(this.state.rooms);
+    };
     }
 
   
@@ -51,7 +57,7 @@ class App extends React.Component {
   createRoom = (e) => {
     e.preventDefault();
     if(this.state.username && this.state.room){
-      socket.emit('JOIN_ROOM', this.state.room.toLowerCase(), (err) => {
+      socket.emit('NEW_ROOM', this.state.room.toLowerCase(), (err) => {
         this.setState({
           join: true
         })
@@ -75,10 +81,10 @@ class App extends React.Component {
     return (
       <div>
         <div className='jumbotron'>
-          <h1>MERN Chat App</h1>
+          <h1>Charla(Chat) App</h1>
         </div>
         
-      {this.state.join ? <Chat user={this.state.username} channel={this.state.channel} socket={this.socket}/> : 
+      {this.state.join ? <Chat user={this.state.username} room={this.state.room} socket={this.socket}/> : 
 
       <div>
         <div className="container">
@@ -86,10 +92,9 @@ class App extends React.Component {
               <div className="card-header"><h5 className="card-title">Available Rooms</h5></div>
               <div className="card-body">
                 
-                {this.state.rooms.map(room => {
+                {this.state.rooms.map((room, i) => {
                   return (
-                    <div>
-                      <Card>
+                      <Card key={i}>
                         <CardBody>
                         <div onClick={this.toggle}><div className="card-header">{room.toUpperCase()}</div></div>
                           <Collapse isOpen={this.state.collapse}>
@@ -104,7 +109,6 @@ class App extends React.Component {
                           </Collapse>
                         </CardBody>
                       </Card>
-                    </div>
                   )
                 })}
               </div>

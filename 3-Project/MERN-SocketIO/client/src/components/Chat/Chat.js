@@ -11,7 +11,7 @@ class Chat extends React.Component{
             username: props.user,
             message: '',
             messages: [],
-            channel: props.channel
+            room: props.room
         };
         
         // this.socket = io('localhost:3001/', {
@@ -24,7 +24,7 @@ class Chat extends React.Component{
         });
 
         const addMessage = data => {
-            console.log(data);
+            console.log('NEW MESSAGE DATA: ', data);
             this.setState({messages: [...this.state.messages, data]});
             console.log(this.state.messages);
         };
@@ -35,10 +35,23 @@ class Chat extends React.Component{
             props.socket.emit('SEND_MESSAGE', {
                 author: this.state.username,
                 message: this.state.message,
-                room: this.state.channel.toLowerCase()
+                room: this.state.room.toLowerCase()
             })
             this.setState({message: ''});
-        }        
+        }
+        
+        this.sendIntro = () => {
+          // console.log(this.state.username, this.state.message)
+          props.socket.emit('SEND_INTRO', {
+              author: this.state.username,
+              message: `${this.state.username } has joined.`,
+              room: this.state.room.toLowerCase()
+          })
+      }
+    }
+
+    componentDidMount() {
+      this.sendIntro()
     }
     render(){
        
@@ -49,7 +62,7 @@ class Chat extends React.Component{
                     <div className="col-12">
                         <div className="chatCard">
                             <div className="chatCard-body">
-                                <div className="ChatCard-title">{this.state.channel.toUpperCase()}</div>
+                                <div className="ChatCard-title">{this.state.room.toUpperCase()}</div>
                                 <hr/>
                                 <div className="messages">
                                     {this.state.messages.map(message => {

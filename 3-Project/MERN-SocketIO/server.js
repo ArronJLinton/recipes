@@ -44,50 +44,7 @@ app.use(function (err, req, res) {
 
 // ============ Socket listeners ================ //
 // fired off once a new connection is triggered client side
-io.on('connection', socket => {
-
-  // var room = socket.handshake.query.r_var;
-  
-
-  socket.on('SEND_MESSAGE', function (data) {
-    console.log(data);
-    console.log('SENDING TO ROOM: ', data.room)
-    const room = data.room;
-    socket.join(room, () => {
-      io.to(room).emit('RECEIVE_MESSAGE', data);
-    })
-    
-  });
-
-  socket.on('GET_ROOMS', function (callback) {
-    var rooms = io.sockets.adapter.rooms;
-
-    let roomList = [];
-
-    for (const key in rooms) {
-      if(key !== 'undefined' && !(/[A-Z]/.test(key))){
-        roomList.push(key)
-      }
-    }
-
-    console.log("ROOMS", roomList)
-    callback(null, roomList)
-  });
-
-  socket.on('JOIN_ROOM', function (room, callback) {
-    console.log('JOINING ROOM: ', room)
-    socket.join(room, () => {
-      callback(null, true)
-    });
-    
-  });
-
-  // disconnect is fired when a client leaves the server
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-});
-
+require('./socket')(io)
 
 // ==== if its production environment!
 if (process.env.NODE_ENV === 'production') {
