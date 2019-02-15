@@ -6,21 +6,29 @@ Simple chat application built with Socket.io, Node, Express, and React.
 
 ## Demo
 
-  <img src="https://media.giphy.com/media/Sb6YTCOsQUWipTDSWf/giphy.gif" width="100%" height="auto" />
+![Demo](http://g.recordit.co/WtUtoKuoJW.gif)
+
+## Usage
+
+```
+npm install
+
+npm start
+```
 
 ## Project Structure
 
 ```
-|-- server.js // The entry point for running the backend server locally, and main server for production
-|-- db/
-|     |-- index.js  // Configures the connection to the database
-| -- src/                           // Entry for the React client side application
+|-- server.js       // The entry point for running the backend server locally, and main server for production
+|-- socket/
+|   |-- index.js    // Socket event listeners
+| -- client/        // Entry for the React client side application
 ```
 
 ## Resources
 
-[Client API](https://socket.io/docs/client-api/)
-[Server API](https://socket.io/docs/server-api/)
-[Create A ChatApp with Socket.IO, Node, Express, and React](https://www.valentinog.com/blog/socket-io-node-js-react/)
+* [Client API](https://socket.io/docs/client-api/)
+* [Server API](https://socket.io/docs/server-api/)
+* [Create A ChatApp with Socket.IO, Node, Express, and React](https://www.valentinog.com/blog/socket-io-node-js-react/)
 
 ## Note
