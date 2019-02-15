@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Chat.css";
 import io from "socket.io-client";
-const socket = io();
+// const socket = io();
 
 class Chat extends React.Component{
     constructor(props){
@@ -10,15 +10,16 @@ class Chat extends React.Component{
         this.state = {
             username: props.user,
             message: '',
-            messages: []
+            messages: [],
+            channel: props.channel
         };
         
-        this.socket = io('localhost:3001/', {
-            query: `r_var=private`
-        });
+        // this.socket = io('localhost:3001/', {
+        //     query: `r_var=private`
+        // });
   
-        socket.on('RECEIVE_MESSAGE', function(data){
-            console.log("Message Received: ", data )
+        props.socket.on('RECEIVE_MESSAGE', function(data){
+            console.log("Message Received: ", data)
             addMessage(data);
         });
 
@@ -31,9 +32,10 @@ class Chat extends React.Component{
         this.sendMessage = ev => {
             ev.preventDefault();
             // console.log(this.state.username, this.state.message)
-            socket.emit('SEND_MESSAGE', {
+            props.socket.emit('SEND_MESSAGE', {
                 author: this.state.username,
-                message: this.state.message
+                message: this.state.message,
+                room: this.state.channel.toLowerCase()
             })
             this.setState({message: ''});
         }        
@@ -47,7 +49,7 @@ class Chat extends React.Component{
                     <div className="col-12">
                         <div className="chatCard">
                             <div className="chatCard-body">
-                                <div className="ChatCard-title">Chat Room</div>
+                                <div className="ChatCard-title">{this.state.channel.toUpperCase()}</div>
                                 <hr/>
                                 <div className="messages">
                                     {this.state.messages.map(message => {

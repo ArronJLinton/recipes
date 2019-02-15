@@ -9,7 +9,9 @@
     "prettier": "prettier --check \"./**/*.js\" \"./**/*.md\""
   },
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "cors": "^2.8.5"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
