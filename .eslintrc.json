@@ -21,8 +21,8 @@
         "eqeqeq": "error",
         "no-empty-function": "error",
         "no-multi-spaces": "error",
-        "no-unused-vars": "error",
         "camelcase": "error",
+        "quotes": [2, "double", "avoid-escape"],
         "indent": [
             "error",
             2
@@ -36,5 +36,12 @@
             "always"
         ],
         "prettier/prettier": "error"         
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
     }
+  }
 }

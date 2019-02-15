@@ -5,16 +5,20 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint **/*.js --quiet",
-    "fix": "eslint --fix .",
-    "prettier": "prettier --check \"./**/*.js\" \"./**/*.md\""
+    "prettier": "prettier --check \"./**/*.js\" \"./**/*.md\"",
+    "fix": "eslint **/*.js --fix"
   },
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.6",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "mocha": "^5.2.0",
     "prettier": "^1.16.4"
   }
