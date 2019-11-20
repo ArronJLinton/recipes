@@ -23,7 +23,7 @@
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.14",
 		"@fortawesome/free-solid-svg-icons": "^5.7.1",
-		"axios": "^0.18.0",
+		"axios": "^0.18.1",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.18.3",
 		"dotenv": "^6.2.0",
